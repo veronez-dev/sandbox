@@ -1,0 +1,28 @@
+name: Pipeline de CI
+on:
+  push:
+    branches:
+      ["main"]
+  workflow_dispatch:
+jobs:
+  build-image:
+    name: Execução do Build da Imagem 
+    runs-on: ubuntu-latest
+    steps:
+    - name: "Obtendo o código do repositório"
+      uses: actions/checkout@v4.1.5
+    - name: Autenticando no Docker Hub
+      uses: docker/login-action@v3.1.0
+      with:
+        username: ${{ secrets.DOCKER_HUB_USER }}
+        password: ${{ secrets.DOCKER_HUB_PASSWORD }}
+    - name: Construção e envio da imagem
+      uses: docker/build-push-action@v5.3.0
+      with:
+        context: .
+        file: ./Dockerfile
+        push: true
+        tags: |
+          fabricioveronez/sandbox:${{ github.run_number }}-dev
+          fabricioveronez/sandbox:latest
+        
