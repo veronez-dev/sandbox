@@ -1,0 +1,17 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: .devcontainer/Dockerfile.dev
+    environment:
+      DOCKER_URL: "http://docker:2375"
+    volumes:
+      - .:/app:cached
+  docker:
+    image: docker:dind
+    privileged: true
+    environment:
+      DOCKER_TLS_CERTDIR: ""
+    ports:
+      - 2377:2375
+    
