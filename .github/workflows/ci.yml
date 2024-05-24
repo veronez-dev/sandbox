@@ -25,5 +25,3 @@ jobs:
         tags: |
           fabricioveronez/sandbox:${{ github.run_number }}-dev
           fabricioveronez/sandbox:latest
-        
-teste
