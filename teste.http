@@ -1,0 +1,7 @@
+POST http://localhost:5000/environment HTTP/1.1
+content-type: application/json
+
+{
+    "environmentID": "Teste",
+    "email": "fabricio@gmail.com"
+}
