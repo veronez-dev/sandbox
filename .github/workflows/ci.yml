@@ -23,5 +23,5 @@ jobs:
         file: ./Dockerfile
         push: true
         tags: |
-          fabricioveronez/sandbox:${{ github.run_number }}-dev
+          fabricioveronez/sandbox:v${{ github.run_number }}-dev
           fabricioveronez/sandbox:latest
