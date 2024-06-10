@@ -23,7 +23,8 @@
 				"ms-azuretools.vscode-docker",
 				"golang.go",
 				"github.copilot",
-				"github.vscode-github-actions"
+				"github.vscode-github-actions",
+				"humao.rest-client"
 			]
 		}
 	}

@@ -35,7 +35,7 @@ func (docker *docker) CreateContainer() (string, error) {
 	ctx := context.Background()
 
 	config := container.Config{
-		Image:        "nginx",
+		Image:        "ubuntu",
 		Tty:          true,
 		OpenStdin:    true,
 		AttachStdin:  true,
@@ -43,15 +43,12 @@ func (docker *docker) CreateContainer() (string, error) {
 		AttachStderr: true,
 	}
 
-	reader, err := docker.client.ImagePull(ctx, "nginx", types.ImagePullOptions{})
+	reader, err := docker.client.ImagePull(ctx, "ubuntu", types.ImagePullOptions{})
 	if err != nil {
 		return "", err
 	}
 
 	defer reader.Close()
-	// cli.ImagePull is asynchronous.
-	// The reader needs to be read completely for the pull operation to complete.
-	// If stdout is not required, consider using io.Discard instead of os.Stdout.
 	io.Copy(os.Stdout, reader)
 
 	resp, derr := docker.client.ContainerCreate(ctx, &config, nil, nil, nil, "")

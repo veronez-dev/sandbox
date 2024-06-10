@@ -5,6 +5,7 @@ services:
       dockerfile: .devcontainer/Dockerfile.dev
     environment:
       DOCKER_URL: "http://docker:2375"
+      WEBSOCKET_URL: "localhost:2377"
     volumes:
       - .:/app:cached
   docker:
